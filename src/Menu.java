@@ -63,7 +63,7 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("Atualizar Carrinho\n");
-                    System.out.print("Digite o nome do Livro a ser atualizado: ");
+                    System.out.print("Digite o nome do Livro a ser atualizado:\n ");
                     nome = sc.nextLine();
 
                     break;

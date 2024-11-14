@@ -12,7 +12,7 @@ public class ProdutoRepository implements Repository
     @Override
     public void adicionarProduto(Produto produto) {
         produtos.add(produto);
-        System.out.println("Produto adicionado: " + produto.getNome());
+        System.out.println("Livro adicionado: " + produto.getNome());
     }
 
     @Override
@@ -23,7 +23,7 @@ public class ProdutoRepository implements Repository
                 return;
             }
         }
-        System.out.println("Produto não encontrado: " + nome);
+        System.out.println("Livro não encontrado: " + nome);
     }
 
     @Override
@@ -31,22 +31,22 @@ public class ProdutoRepository implements Repository
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getNome().equalsIgnoreCase(nome)) {
                 produtos.set(i, produtoAtualizado);
-                System.out.println("Produto atualizado: " + nome);
+                System.out.println("Lista atualizado: " + nome);
                 return;
             }
         }
-        System.out.println("Produto não encontrado: " + nome);
+        System.out.println("Livro não encontrado: " + nome);
     }
 
     @Override
     public void removerProduto(String nome) {
         produtos.removeIf(produto -> produto.getNome().equalsIgnoreCase(nome));
-        System.out.println("Produto removido: " + nome);
+        System.out.println("Livro removido: " + nome);
     }
 
     @Override
     public void listarProdutos() {
-        System.out.println("\nLista de Produtos:");
+        System.out.println("\nLista de Livros:");
         for (Produto produto : produtos) {
             produto.visualizarDetalhes();
         }
