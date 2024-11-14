@@ -52,6 +52,7 @@ public class Menu {
                         System.out.print("Digite o nome do Livro: ");
                         nome = sc.nextLine();
                         sc.nextLine();
+                        repository.adicionarLivro(String nome);
                         System.out.print("Digite o autor do Livro: ");
                         autor = sc.nextLine();
                         System.out.print("Digite o preço do Livro: ");
@@ -61,7 +62,7 @@ public class Menu {
                         break;
                     case 2:
                         System.out.print("Livros adicionados no Carrinho: ");
-                        repository.listarProdutos();
+                        repository.listarLivros();
 
                         break;
                     case 3:
@@ -73,11 +74,11 @@ public class Menu {
                     case 4:
                         System.out.print("Digite o nome do Livro a ser removido: ");
                         String nomeRemover = sc.nextLine();
-                        repository.removerProduto(nomeRemover);
+                        repository.removerLivro(nomeRemover);
 
                         break;
                     case 5:
-                        repository.listarProdutos();
+                        repository.listarLivros();
                         System.out.println("Lista Atualizada com sucesso!");
 
                         break;

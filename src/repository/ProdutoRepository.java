@@ -5,51 +5,67 @@ import model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutoRepository implements Repository
-{
-    private List<Produto> produtos = new ArrayList<>();
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProdutoRepository implements Repository {
+
+    // Lista para armazenar os produtos
+    private List<Produto> livros = new ArrayList<>();
 
     @Override
-    public void adicionarProduto(Produto produto) {
-        produtos.add(produto);
-        System.out.println("Livro adicionado: " + produto.getNome());
+    public void adicionarLivro(Produto produto) {
+        if (produto != null) {
+            livros.add(produto);
+            System.out.println("Produto adicionado: " + produto.getNome());
+        } else {
+            System.out.println("Produto inválido!");
+        }
     }
 
     @Override
-    public void visualizarProduto(String nome) {
-        for (Produto produto : produtos) {
-            if (produto.getNome().equalsIgnoreCase(nome)) {
-                produto.visualizarDetalhes();
+    public void visualizarLivro(Produto produto) {
+        if (livros.contains(produto)) {
+            System.out.println("Produto encontrado: " + produto);
+        } else {
+            System.out.println("Produto não encontrado!");
+        }
+    }
+
+    @Override
+    public void atualizarCarrinho(String nome, Produto produtoAtualizado) {
+        for (int i = 0; i < livros.size(); i++) {
+            Produto livro = livros.get(i);
+            if (livro.getNome().equals(nome)) {
+                livros.set(i, produtoAtualizado);
+                System.out.println("Produto atualizado: " + produtoAtualizado.getNome());
                 return;
             }
         }
-        System.out.println("Livro não encontrado: " + nome);
+        System.out.println("Produto não encontrado para atualização!");
     }
 
     @Override
-    public void atualizarProduto(String nome, Produto produtoAtualizado) {
-        for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).getNome().equalsIgnoreCase(nome)) {
-                produtos.set(i, produtoAtualizado);
-                System.out.println("Lista atualizado: " + nome);
+    public void removerLivro(String nome) {
+        for (Produto livro : livros) {
+            if (livro.getNome().equals(nome)) {
+                livros.remove(livro);
+                System.out.println("Produto removido: " + nome);
                 return;
             }
         }
-        System.out.println("Livro não encontrado: " + nome);
+        System.out.println("Produto não encontrado para remoção!");
     }
 
     @Override
-    public void removerProduto(String nome) {
-        produtos.removeIf(produto -> produto.getNome().equalsIgnoreCase(nome));
-        System.out.println("Livro removido: " + nome);
-    }
-
-    @Override
-    public void listarProdutos() {
-        System.out.println("\nLista de Livros:");
-        for (Produto produto : produtos) {
-            produto.visualizarDetalhes();
+    public void listarLivros() {
+        if (livros.isEmpty()) {
+            System.out.println("Não há produtos cadastrados.");
+        } else {
+            System.out.println("Lista de Produtos:");
+            for (Produto livro : livros) {
+                System.out.println(livro);
+            }
         }
     }
 }
-

@@ -4,11 +4,11 @@ import model.Produto;
 
     public interface Repository {
 
-        void adicionarProduto(Produto produto);
-        void visualizarProduto(String nome);
-        void atualizarProduto(String nome, Produto produtoAtualizado);
-        void removerProduto(String nome);
+        void adicionarLivro(Produto nome);
+        void visualizarLivro(Produto nome);
+        void atualizarCarrinho(String nome, Produto produtoAtualizado);
+        void removerLivro(String nome);
 
-        void listarProdutos();
+        void listarLivros();
     }
 
