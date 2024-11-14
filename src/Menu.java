@@ -1,12 +1,19 @@
+import model.Produto;
+import repository.ProdutoRepository;
+import repository.Repository;
+
 import java.util.Scanner;
 
 public class Menu {
 
     public static void main(String[] args) {
 
+        Repository repository = new ProdutoRepository();
         Scanner sc = new Scanner(System.in);
 
         int opcao;
+        String nome, autor;
+        double preco;
 
         while (true) {
 
@@ -17,11 +24,11 @@ public class Menu {
             System.out.println("                                                     ");
             System.out.println("*****************************************************");
             System.out.println("                                                     ");
-            System.out.println("            1 - Listar Livros                        ");
-            System.out.println("            2 - Adicionar Livros no Carrinho         ");
-            System.out.println("            3 - Visualizar Carrinho                  ");
-            System.out.println("            4 - Confirmar Pedido                     ");
-            System.out.println("            5 - Cancelar Pedido                      ");
+            System.out.println("            1 - Adicionar Livros                     ");
+            System.out.println("            2 - Visualizar Livros no Carrinho        ");
+            System.out.println("            3 - Atualizar Carrinho                   ");
+            System.out.println("            4 - Remover Livro                        ");
+            System.out.println("            5 - Listar Todos os Livros               ");
             System.out.println("            6 - Sair                                 ");
             System.out.println("                                                     ");
             System.out.println("*****************************************************");
@@ -39,31 +46,45 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("Listar Livros\n\n");
+                    System.out.print("Digite o nome do Livro: ");
+                    nome = sc.nextLine();
+                    sc.nextLine();
+                    System.out.print("Digite o autor do Livro: ");
+                    autor = sc.nextLine();
+                    System.out.print("Digite o preço do Livro: ");
+                    preco = sc.nextDouble();
+                    sc.nextLine();
 
                     break;
                 case 2:
-                    System.out.println("Adicionar Livros no Carrinho\n\n");
+                    System.out.print("Livros adicionados no Carrinho: ");
+                    repository.listarProdutos();
 
                     break;
                 case 3:
-                    System.out.println("Visualizar Carrinho\n\n");
+                    System.out.println("Atualizar Carrinho\n");
+                    System.out.print("Digite o nome do Livro a ser atualizado: ");
+                    nome = sc.nextLine();
 
                     break;
                 case 4:
-                    System.out.println("Confirmar Pedido\n\n");
+                    System.out.print("Digite o nome do Livro a ser removido: ");
+                    String nomeRemover = sc.nextLine();
+                    repository.removerProduto(nomeRemover);
 
                     break;
                 case 5:
-                    System.out.println("Cancelar Pedido\n\n");
+                    repository.listarProdutos();
+                    System.out.println("Lista Atualizada com sucesso!");
 
                     break;
                 case 6:
-                    System.out.println("Sair\n\n");
+                    System.out.println("Aplicação encerrada com sucesso!");
 
                     break;
                 default:
                     System.out.println("\nOpção Inválida!\n");
+
                     break;
             }
         }
